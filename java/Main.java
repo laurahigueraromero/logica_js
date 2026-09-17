@@ -1,4 +1,4 @@
-package java;
+// package java;
 
 import java.util.Scanner;
 
@@ -8,17 +8,17 @@ public class Main {
     // Escribe un método que reciba un número entero y devuelva si es
     // positivo, negativo o cero.
 
-public static String tipoNumero(int numero) {
-    String tiponumero;
-    if (numero == 0) {
-        tiponumero = "El número es cero";
-    } else if (numero > 0) {
-        tiponumero = "El número es positivo";
-    } else {
-        tiponumero = "El número es negativo";
+    public static String tipoNumero(int numero) {
+        String tiponumero;
+        if (numero == 0) {
+            tiponumero = "El número es cero";
+        } else if (numero > 0) {
+            tiponumero = "El número es positivo";
+        } else {
+            tiponumero = "El número es negativo";
+        }
+        return tiponumero;
     }
-    return tiponumero;
-}
 
     // Ejercicio 2 (Básico):
     // Escribe un método que reciba un número entero y calcule su
@@ -59,18 +59,67 @@ public static String tipoNumero(int numero) {
         return multiplo;
     }
 
-    public static void main(String[] args) {
+    /*
+     * Crea un programa que cuente cuantas veces se repite cada palabra
+     * y que muestre el recuento final de todas ellas.
+     * - Los signos de puntuación no forman parte de la palabra.
+     * - Una palabra es la misma aunque aparezca en mayúsculas y minúsculas.
+     * - No se pueden utilizar funciones propias del lenguaje que
+     * lo resuelvan automáticamente.
+     */
+
+    public static void contarPalabras() {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Ejercicio 1: Ingrese un número entero para determinar si es positivo, negativo o cero:");
-        int numero = sc.nextInt();
-        String resultadoTipoNumero = tipoNumero(numero);
-        System.out.println(resultadoTipoNumero);    
+        // que ingresen las palabras
+        System.out.println("ingresa las palabras");
+        // guardamos las palabras
+        String[] inputs = sc.nextLine().split(" ");
 
+        int cantidadPalabras = inputs.length;
 
+        if (cantidadPalabras <= 1) {
+            System.out.println("Ingresaste solo una palabra, no se puede comparar con otra.");
+            return; // Termina el método temprano de forma segura
+        }
 
-       
+        int i = 0;
+        String[] palabras = inputs;
+        String[] palabrasActuales = palabras;
+        for (i = 0; i < cantidadPalabras; i++) {
+
+            // System.out.println(palabrasActuales[i]);
+
+            if (palabrasActuales[i] != null) {
+                int contador = 1;
+                String palabraActual = palabrasActuales[i];
+
+                for (int j = i + 1; j < cantidadPalabras; j++) {
+
+                    if (palabrasActuales[i].equalsIgnoreCase(palabrasActuales[j])) {
+                        contador++;
+                        palabrasActuales[j] = null;
+
+                    }
+
+                }
+
+                if (contador > 1) {
+                    System.out.println("La palabra '" + palabraActual + "' se repite " + contador + " veces.");
+                } else {
+                    System.out.println("La palabra '" + palabraActual + "' no se repite.");
+                }
+
+            }
+
+        }
+
+    }
+
+    public static void main(String[] args) {
+
+        contarPalabras();
 
     }
 
