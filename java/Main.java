@@ -1,5 +1,6 @@
 // package java;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -58,6 +59,41 @@ public class Main {
 
         return multiplo;
     }
+
+    // Ejercicio 4 (Básico):
+    // Escribe un método que reciba un número entero y devuelva si es
+    // par o impar.
+
+    // Ejercicio 5 (Básico):
+    // Escribe un método que reciba un número entero y devuelva si es
+    // un número primo o no.
+
+    // Ejercicio 6 (Básico):
+    // Escribe un método que genere un array de números aleatorios y
+    // devuelva cuál es el número mayor.
+
+    public static int numMayor() {
+        Random rd = new Random();
+        int[] numeros = new int[5];
+
+        for (int i = 0; i < numeros.length; i++) {
+            numeros[i] = rd.nextInt(100);
+        }
+
+        int mayor = numeros[0];
+
+        for (int i = 1; i < numeros.length; i++) {
+            if (numeros[i] > mayor) {
+                mayor = numeros[i];
+            }
+        }
+
+        return mayor;
+    }
+
+
+
+
 
     /*
      * Crea un programa que cuente cuantas veces se repite cada palabra
@@ -118,6 +154,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+
+        System.out.println("El numero mayor generado aleatoriamente es: " + numMayor());
 
         contarPalabras();
 
